@@ -1,0 +1,26 @@
+.Form {
+  width: 300px;
+  margin: 20px auto 0;
+  padding: 16px;
+  border: 1px solid #ccc;
+}
+.List {
+  width: 300px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 16px;
+  text-align: left;
+}
+.Item {
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+  margin-bottom: 8px;
+  line-height: 32px;
+}
+.Item:last-child {
+  margin-bottom: 0; 
+}
+.Item {
+  display: flex;
+  justify-content: space-between;
+}
