@@ -4,15 +4,15 @@ import List from "./components/List";
 
 function Todo() {
   const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    const res = await fetch("http://localhost:3000/posts");
+    const data = await res.json();
+    setData(data);
+  };
+
   useEffect(() => {
-    console.log("组件挂载完之后执行");
-    fetch("http://localhost:3000/posts")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setData(data);
-      });
+    fetchData();
     return () => {};
   }, []);
 

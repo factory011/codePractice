@@ -1,23 +1,23 @@
 import "./index.css";
 import { Button } from "antd";
 
-function Item(info) {
-  const { data, setData } = info;
-  const onDelete = (e) => {
-    const id = e.currentTarget.getAttribute('id')
-    fetch(`http://localhost:3000/posts/${id}`, {
+function Item({ data, setData }) {
+  const fetchDelData = async (e) => {
+    const id = e.currentTarget.getAttribute("id");
+    const res = await fetch(`http://localhost:3000/posts/${id}`, {
       method: "DELETE",
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((list) => {
-        setData((preState) => {
-          return preState.filter((ele) => {
-            return (ele.id !== id);
-          });
-        });
+    });
+    const relult = await res.json();
+    console.log(relult);
+    setData((preState) => {
+      return preState.filter((ele) => {
+        return ele.id !== id;
       });
+    });
+  };
+
+  const onDelete = (e) => {
+    fetchDelData(e);
   };
   return (
     <div className="Item">

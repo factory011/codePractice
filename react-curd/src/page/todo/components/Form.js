@@ -3,9 +3,7 @@ import { useState } from "react";
 import "./index.css";
 import { v4 as uuid } from "uuid";
 
-function FormWrap(info) {
-  const { data, setData } = info;
-
+function FormWrap({ data, setData }) {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
 
@@ -16,23 +14,23 @@ function FormWrap(info) {
     setAge(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const fetchPostData = async () => {
     const reqData = { id: uuid(), name: name, age: age };
-    fetch("http://localhost:3000/posts", {
+    const res = await fetch("http://localhost:3000/posts", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(reqData),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((list) => {
-        setData([...data, list]);
-        setName('');
-        setAge('');
-      });
+    });
+    const relult = await res.json();
+    setData([...data, relult]);
+    setName("");
+    setAge("");
+  };
+
+  const handleSubmit = () => {
+    fetchPostData();
   };
   return (
     <div className="Form">

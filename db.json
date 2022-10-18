@@ -1,0 +1,18 @@
+{
+  "posts": [
+    {
+      "id": "e4693ec2-a5f9-431d-a432-00a3991dbb7d",
+      "name": "zhangsan",
+      "age": "12"
+    },
+    {
+      "id": "9b10ef75-873e-4505-8502-8cd87b55bfeb",
+      "name": "lis",
+      "age": "32"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
